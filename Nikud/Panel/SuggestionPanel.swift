@@ -16,12 +16,14 @@ final class PanelModel: ObservableObject {
     }
 
     @Published var task: TextTask = .proofread
+    @Published var tone: Tone = .professional
     @Published var phase: Phase = .capturing
     @Published var sourceText = ""
     @Published var output = ""
 
-    func reset(task: TextTask) {
+    func reset(task: TextTask, tone: Tone) {
         self.task = task
+        self.tone = tone
         phase = .capturing
         sourceText = ""
         output = ""
@@ -38,10 +40,12 @@ final class SuggestionPanelController {
     var onAccept: (() -> Void)?
     var onDismiss: (() -> Void)?
     var onOpenAccessibility: (() -> Void)?
+    var onSelectTask: ((TextTask) -> Void)?
+    var onSelectTone: ((Tone) -> Void)?
 
     private var panel: NSPanel?
     private var clickMonitor: Any?
-    private let panelSize = NSSize(width: 372, height: 300)
+    private let panelSize = NSSize(width: 376, height: 344)
 
     func show(near point: NSPoint) {
         let panel = self.panel ?? makePanel()
@@ -80,7 +84,9 @@ final class SuggestionPanelController {
             model: model,
             onAccept: { [weak self] in self?.onAccept?() },
             onDismiss: { [weak self] in self?.onDismiss?() },
-            onOpenAccessibility: { [weak self] in self?.onOpenAccessibility?() }
+            onOpenAccessibility: { [weak self] in self?.onOpenAccessibility?() },
+            onSelectTask: { [weak self] task in self?.onSelectTask?(task) },
+            onSelectTone: { [weak self] tone in self?.onSelectTone?(tone) }
         ))
         host.frame = NSRect(origin: .zero, size: panelSize)
         panel.contentView = host
@@ -124,17 +130,22 @@ struct SuggestionPanelView: View {
     let onAccept: () -> Void
     let onDismiss: () -> Void
     let onOpenAccessibility: () -> Void
+    let onSelectTask: (TextTask) -> Void
+    let onSelectTone: (Tone) -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
             header
+            if showsTaskPicker {
+                taskPicker
+            }
             Divider().opacity(0.5)
             content
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             footer
         }
         .padding(Theme.Spacing.md)
-        .frame(width: 372, height: 300)
+        .frame(width: 376, height: 344)
         .background(
             RoundedRectangle(cornerRadius: Theme.Radius.lg, style: .continuous)
                 .fill(.regularMaterial)
@@ -144,7 +155,17 @@ struct SuggestionPanelView: View {
                 .stroke(Theme.hairline, lineWidth: 1)
         )
         .animation(Theme.Motion.spring, value: model.phase)
+        .animation(Theme.Motion.snappy, value: model.task)
     }
+
+    private var showsTaskPicker: Bool {
+        switch model.phase {
+        case .needsPermission, .empty: return false
+        default: return true
+        }
+    }
+
+    // MARK: Header
 
     private var header: some View {
         HStack(spacing: Theme.Spacing.sm) {
@@ -164,9 +185,81 @@ struct SuggestionPanelView: View {
                     .foregroundStyle(.tertiary)
             }
             Spacer()
+            if model.task == .polish {
+                toneMenu
+            }
             IconButton(systemName: "xmark", help: "Dismiss", action: onDismiss)
         }
     }
+
+    private var toneMenu: some View {
+        Menu {
+            ForEach(Tone.allCases) { tone in
+                Button {
+                    onSelectTone(tone)
+                } label: {
+                    Label(tone.title, systemImage: tone.systemImage)
+                }
+            }
+        } label: {
+            HStack(spacing: 3) {
+                Image(systemName: model.tone.systemImage).font(.system(size: 9))
+                Text(model.tone.title).font(.system(size: 11, weight: .medium))
+                Image(systemName: "chevron.up.chevron.down").font(.system(size: 7))
+            }
+            .foregroundStyle(.secondary)
+        }
+        .menuStyle(.borderlessButton)
+        .menuIndicator(.hidden)
+        .fixedSize()
+    }
+
+    private var headerSubtitle: String {
+        guard model.phase == .finished, model.task.showsDiff, !model.sourceText.isEmpty else {
+            return "Nikud"
+        }
+        let count = TextDiff.changeCount(original: model.sourceText, corrected: model.output)
+        return count == 0 ? "No changes needed" : "\(count) change\(count == 1 ? "" : "s")"
+    }
+
+    // MARK: Task picker
+
+    private var taskPicker: some View {
+        HStack(spacing: 3) {
+            ForEach(TextTask.allCases) { task in
+                let selected = task == model.task
+                Button {
+                    onSelectTask(task)
+                } label: {
+                    HStack(spacing: 4) {
+                        Image(systemName: task.systemImage)
+                            .font(.system(size: 10, weight: .medium))
+                        Text(task.title)
+                            .font(.system(size: 10.5, weight: .medium))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.8)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 6)
+                    .foregroundStyle(selected ? Color.white : Color.secondary)
+                    .background {
+                        if selected {
+                            RoundedRectangle(cornerRadius: 7, style: .continuous)
+                                .fill(Theme.brandGradient)
+                        }
+                    }
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(3)
+        .background(
+            RoundedRectangle(cornerRadius: 9, style: .continuous).fill(Theme.softFill)
+        )
+    }
+
+    // MARK: Content
 
     @ViewBuilder
     private var content: some View {
@@ -190,14 +283,6 @@ struct SuggestionPanelView: View {
                 tint: .secondary
             )
         }
-    }
-
-    private var headerSubtitle: String {
-        guard model.phase == .finished, model.task.showsDiff, !model.sourceText.isEmpty else {
-            return "Nikud"
-        }
-        let count = TextDiff.changeCount(original: model.sourceText, corrected: model.output)
-        return count == 0 ? "No changes needed" : "\(count) change\(count == 1 ? "" : "s")"
     }
 
     private var resultView: some View {
@@ -245,6 +330,8 @@ struct SuggestionPanelView: View {
         }
         .frame(maxWidth: .infinity)
     }
+
+    // MARK: Footer
 
     @ViewBuilder
     private var footer: some View {

@@ -4,9 +4,10 @@ import CoreGraphics
 
 /// Reads and replaces the selected text in the frontmost application.
 ///
-/// The Accessibility API is tried first; a clipboard-and-keystroke fallback
-/// covers apps that do not expose their selection. These calls block briefly
-/// and must be invoked off the main thread.
+/// The Accessibility API is used to read the selection (with a clipboard
+/// fallback); replacing is always done by pasting, which works in any app
+/// that accepts Cmd-V. These calls block briefly and must run off the main
+/// thread.
 enum TextGrabber {
 
     /// Whether the app currently has Accessibility permission.
@@ -27,13 +28,23 @@ enum TextGrabber {
         return selectedTextViaCopy()
     }
 
-    /// Replaces the current selection with `text`.
+    /// Replaces the current selection by pasting `text`.
+    /// The caller must make the target app frontmost first.
     static func replaceSelection(with text: String) {
-        if setSelectedTextViaAX(text) { return }
-        pasteViaClipboard(text)
+        let pasteboard = NSPasteboard.general
+        let saved = pasteboard.string(forType: .string)
+        pasteboard.clearContents()
+        pasteboard.setString(text, forType: .string)
+        usleep(60_000)
+        sendCommandKey(keyCode: 9) // Cmd-V
+        usleep(220_000)
+        if let saved {
+            pasteboard.clearContents()
+            pasteboard.setString(saved, forType: .string)
+        }
     }
 
-    // MARK: - Accessibility
+    // MARK: - Accessibility (read)
 
     private static func focusedElement() -> AXUIElement? {
         let systemWide = AXUIElementCreateSystemWide()
@@ -54,20 +65,12 @@ enum TextGrabber {
         return value as? String
     }
 
-    private static func setSelectedTextViaAX(_ text: String) -> Bool {
-        guard let element = focusedElement() else { return false }
-        let status = AXUIElementSetAttributeValue(
-            element, kAXSelectedTextAttribute as CFString, text as CFString
-        )
-        return status == .success
-    }
-
-    // MARK: - Clipboard fallback
+    // MARK: - Clipboard
 
     private static func selectedTextViaCopy() -> String? {
         let pasteboard = NSPasteboard.general
         let previousChangeCount = pasteboard.changeCount
-        sendCommandKey(keyCode: 8) // C
+        sendCommandKey(keyCode: 8) // Cmd-C
         for _ in 0..<60 {
             if pasteboard.changeCount != previousChangeCount {
                 return pasteboard.string(forType: .string)
@@ -75,14 +78,6 @@ enum TextGrabber {
             usleep(10_000)
         }
         return nil
-    }
-
-    private static func pasteViaClipboard(_ text: String) {
-        let pasteboard = NSPasteboard.general
-        pasteboard.clearContents()
-        pasteboard.setString(text, forType: .string)
-        usleep(40_000)
-        sendCommandKey(keyCode: 9) // V
     }
 
     private static func sendCommandKey(keyCode: CGKeyCode) {

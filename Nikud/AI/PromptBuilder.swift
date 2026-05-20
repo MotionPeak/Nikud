@@ -43,21 +43,13 @@ enum PromptBuilder {
             return "תקן אך ורק פיסוק ורווחים בטקסט. אל תשנה מילים, אל תתרגם ואל תנסח מחדש. "
                 + "החזר אך ורק את הטקסט המתוקן בעברית."
         case .polish:
-            return "אתה עורך לשון מקצועי. נסח מחדש את הטקסט כך שיהיה ברור, רהוט ו\(hebrewTone(tone)). "
+            return "אתה עורך לשון מקצועי. נסח מחדש את הטקסט \(tone.styleHE). "
                 + "שמור על המשמעות ועל השפה העברית. "
                 + "החזר אך ורק את הטקסט המנוסח — בלי הסברים, בלי מירכאות ובלי הקדמה."
         case .complete:
             return "השלם את הטקסט באופן טבעי. כתוב אך ורק את ההמשך בעברית — "
                 + "אל תחזור על מה שכבר נכתב. שמור על אותה נימה וסגנון, "
                 + "והוסף משפט אחד או שניים לכל היותר."
-        }
-    }
-
-    private static func hebrewTone(_ tone: Tone) -> String {
-        switch tone {
-        case .professional: return "מקצועי"
-        case .friendly:     return "ידידותי"
-        case .concise:      return "תמציתי"
         }
     }
 
@@ -73,9 +65,9 @@ enum PromptBuilder {
                 + " rephrase, translate, or change any words. Output only the corrected"
                 + " text — nothing else."
         case .polish:
-            return "You are an expert editor. Rewrite the text so it reads clearly,"
-                + " fluently, and \(tone.rawValue). Keep the original meaning. Output"
-                + " only the rewritten text — no explanations, quotation marks, or preamble."
+            return "You are an expert editor. Rewrite the text \(tone.styleEN)."
+                + " Keep the original meaning. Output only the rewritten text —"
+                + " no explanations, quotation marks, or preamble."
         case .complete:
             return "You continue the user's text naturally. Write only the text that"
                 + " should come next — do not repeat what the user already wrote. Keep"

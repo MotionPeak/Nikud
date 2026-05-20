@@ -60,6 +60,8 @@ enum Tone: String, CaseIterable, Identifiable, Hashable {
     case professional
     case friendly
     case concise
+    case oldWorld
+    case playful
 
     var id: String { rawValue }
 
@@ -68,6 +70,8 @@ enum Tone: String, CaseIterable, Identifiable, Hashable {
         case .professional: return "Professional"
         case .friendly:     return "Friendly"
         case .concise:      return "Concise"
+        case .oldWorld:     return "Old-World"
+        case .playful:      return "Playful"
         }
     }
 
@@ -76,6 +80,41 @@ enum Tone: String, CaseIterable, Identifiable, Hashable {
         case .professional: return "briefcase"
         case .friendly:     return "bubble.left.and.bubble.right"
         case .concise:      return "scissors"
+        case .oldWorld:     return "crown"
+        case .playful:      return "party.popper"
+        }
+    }
+
+    /// English style directive — slots in after "Rewrite the text ".
+    var styleEN: String {
+        switch self {
+        case .professional:
+            return "in a clear, fluent, and professional style"
+        case .friendly:
+            return "in a clear, warm, and friendly style"
+        case .concise:
+            return "as concisely as possible, keeping only what is essential"
+        case .oldWorld:
+            return "in an elaborate, old-fashioned, and highly courtly style — ornate, "
+                + "grand, and exceedingly well-mannered, as if penned in a bygone era"
+        case .playful:
+            return "in a fun, playful, and light-hearted style, with a dash of wit and personality"
+        }
+    }
+
+    /// Hebrew style directive — slots in after "נסח מחדש את הטקסט ".
+    var styleHE: String {
+        switch self {
+        case .professional:
+            return "בסגנון ברור, רהוט ומקצועי"
+        case .friendly:
+            return "בסגנון ברור, חם וידידותי"
+        case .concise:
+            return "בצורה תמציתית ככל האפשר, תוך השמטת כל מה שאינו הכרחי"
+        case .oldWorld:
+            return "בסגנון מליצי, ארכאי ומכובד במיוחד — מהודר, רב-רושם ורב-נימוסים, כלשון ימים עברו"
+        case .playful:
+            return "בסגנון שובב, קליל ומשועשע, עם קורטוב של הומור ואופי"
         }
     }
 }
