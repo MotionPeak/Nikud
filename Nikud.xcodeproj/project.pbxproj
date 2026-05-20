@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0701B2BF084BA7B705C25AAB /* TextDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8FF6C3AB6544364884C263 /* TextDiff.swift */; };
 		09EAAB74F1E17782D5137281 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFF9251D31C295598B2C8595 /* Assets.xcassets */; };
 		17C484B461790C574ED47DA8 /* HeuristicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433361143862D3D679976DE4 /* HeuristicEngine.swift */; };
 		188DD5A0F44B47CC60E54142 /* ModelsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC98019F37B655FC7FEE16B /* ModelsTab.swift */; };
@@ -65,6 +66,7 @@
 		4A1CEE7E1641DB65BC01F162 /* llama.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = llama.xcframework; path = Frameworks/llama.xcframework; sourceTree = "<group>"; };
 		5D746C264D7361FDE40D6742 /* TextEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEngine.swift; sourceTree = "<group>"; };
 		6F0CF901D0F42FBE19200DBA /* ModelCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCatalog.swift; sourceTree = "<group>"; };
+		7D8FF6C3AB6544364884C263 /* TextDiff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDiff.swift; sourceTree = "<group>"; };
 		83E7AE6105F491AC71937795 /* AboutTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTab.swift; sourceTree = "<group>"; };
 		88B88C331471CE36B9B05FE3 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 		8B088A67DB019B90B72925C2 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				6F0CF901D0F42FBE19200DBA /* ModelCatalog.swift */,
 				8B088A67DB019B90B72925C2 /* ModelManager.swift */,
 				8F86102196EEB41F3C10375D /* PromptBuilder.swift */,
+				7D8FF6C3AB6544364884C263 /* TextDiff.swift */,
 				5D746C264D7361FDE40D6742 /* TextEngine.swift */,
 				927733466D42D720D6C71F6A /* TextTask.swift */,
 			);
@@ -320,6 +323,7 @@
 				91AEAAF40A42E4160CE49B17 /* SettingsWindow.swift in Sources */,
 				E4B7182B92A06FF69323E46C /* ShortcutsTab.swift in Sources */,
 				469C72729F76ECCD1917482A /* SuggestionPanel.swift in Sources */,
+				0701B2BF084BA7B705C25AAB /* TextDiff.swift in Sources */,
 				731E2247451E9A62A1D34194 /* TextEngine.swift in Sources */,
 				2D528116E8ED15AA14C64E32 /* TextGrabber.swift in Sources */,
 				FC482B1D7D7DF52DE309F614 /* TextTask.swift in Sources */,
@@ -405,6 +409,7 @@
 				CODE_SIGN_ENTITLEMENTS = Nikud/Nikud.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ML9HDN3QZS;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -491,6 +496,7 @@
 				CODE_SIGN_ENTITLEMENTS = Nikud/Nikud.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ML9HDN3QZS;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (

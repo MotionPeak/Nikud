@@ -231,21 +231,38 @@ private struct ResultCard: View {
 
     var body: some View {
         let hebrew = LanguageDetector.detect(model.output) == .hebrew
+        let showDiff = model.phase == .finished
+            && model.task.showsDiff
+            && !model.input.isEmpty
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
-            HStack {
+            HStack(spacing: 6) {
                 SectionLabel(text: "Result")
+                if showDiff {
+                    let count = TextDiff.changeCount(original: model.input, corrected: model.output)
+                    Text(count == 0 ? "no changes" : "\(count) change\(count == 1 ? "" : "s")")
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundStyle(.tertiary)
+                }
                 Spacer()
                 if model.isRunning { ThinkingDots() }
             }
 
             ScrollView {
-                Text(model.output.isEmpty ? "…" : model.output)
-                    .font(.system(size: 13))
-                    .textSelection(.enabled)
-                    .frame(maxWidth: .infinity, alignment: hebrew ? .trailing : .leading)
-                    .environment(\.layoutDirection, hebrew ? .rightToLeft : .leftToRight)
+                Group {
+                    if showDiff {
+                        DiffText(original: model.input, corrected: model.output)
+                    } else {
+                        Text(verbatim: model.output.isEmpty ? "…" : model.output)
+                            .foregroundStyle(.primary)
+                    }
+                }
+                .font(.system(size: 13))
+                .lineSpacing(3)
+                .textSelection(.enabled)
+                .frame(maxWidth: .infinity, alignment: hebrew ? .trailing : .leading)
+                .environment(\.layoutDirection, hebrew ? .rightToLeft : .leftToRight)
             }
-            .frame(maxHeight: 168)
+            .frame(height: 150)
 
             if model.phase == .finished {
                 HStack(spacing: Theme.Spacing.sm) {

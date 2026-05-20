@@ -26,7 +26,7 @@ final class LlamaEngine: TextEngine {
     private let vocab: OpaquePointer
     private let context: OpaquePointer
     private let chatFormat: ChatFormat
-    private let contextLength: Int32 = 4096
+    private let contextLength: Int32 = 2048
     private let queue = DispatchQueue(label: "com.shaharsolomons.Nikud.inference", qos: .userInitiated)
 
     /// Initializes the llama.cpp backend exactly once per process.
@@ -103,7 +103,9 @@ final class LlamaEngine: TextEngine {
         let prompt = PromptBuilder.build(for: request, format: chatFormat)
         var promptTokens = try tokenize(prompt, addSpecial: true)
 
-        let maxPromptTokens = Int(contextLength) - 64
+        // Reserve room for the generated tokens so the context never overflows.
+        let budget = maxNewTokens(for: request.task)
+        let maxPromptTokens = max(64, Int(contextLength) - budget - 16)
         if promptTokens.count > maxPromptTokens {
             promptTokens = Array(promptTokens.suffix(maxPromptTokens))
         }
@@ -112,9 +114,9 @@ final class LlamaEngine: TextEngine {
         let sampler = makeSampler(creativity: request.creativity)
         defer { llama_sampler_free(sampler) }
 
-        let budget = maxNewTokens(for: request.task)
         var pending: [UInt8] = []
         var produced = 0
+        var emittedCharacters = 0
 
         while produced < budget {
             if cancellation.isCancelled { throw CancellationError() }
@@ -124,14 +126,25 @@ final class LlamaEngine: TextEngine {
 
             pending.append(contentsOf: pieceBytes(for: next))
             let ready = drainUTF8(&pending)
-            if !ready.isEmpty { emit(ready) }
+            if !ready.isEmpty {
+                emit(ready)
+                emittedCharacters += ready.count
+            }
 
             produced += 1
             try decode([next])
         }
 
         if !pending.isEmpty {
-            emit(String(decoding: pending, as: UTF8.self))
+            let tail = String(decoding: pending, as: UTF8.self)
+            emit(tail)
+            emittedCharacters += tail.count
+        }
+
+        if emittedCharacters == 0 {
+            throw EngineError.generationFailed(
+                "the model returned an empty response. Try DictaLM 2.0 in Settings → Models — it is known to work well."
+            )
         }
     }
 

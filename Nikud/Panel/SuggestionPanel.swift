@@ -159,7 +159,7 @@ struct SuggestionPanelView: View {
             VStack(alignment: .leading, spacing: 1) {
                 Text(model.task.title)
                     .font(.system(size: 13, weight: .semibold))
-                Text("Nikud")
+                Text(headerSubtitle)
                     .font(.system(size: 10))
                     .foregroundStyle(.tertiary)
             }
@@ -192,14 +192,33 @@ struct SuggestionPanelView: View {
         }
     }
 
+    private var headerSubtitle: String {
+        guard model.phase == .finished, model.task.showsDiff, !model.sourceText.isEmpty else {
+            return "Nikud"
+        }
+        let count = TextDiff.changeCount(original: model.sourceText, corrected: model.output)
+        return count == 0 ? "No changes needed" : "\(count) change\(count == 1 ? "" : "s")"
+    }
+
     private var resultView: some View {
         let hebrew = LanguageDetector.detect(model.output) == .hebrew
+        let showDiff = model.phase == .finished
+            && model.task.showsDiff
+            && !model.sourceText.isEmpty
         return ScrollView {
-            Text(model.output.isEmpty ? "…" : model.output)
-                .font(.system(size: 13))
-                .textSelection(.enabled)
-                .frame(maxWidth: .infinity, alignment: hebrew ? .trailing : .leading)
-                .environment(\.layoutDirection, hebrew ? .rightToLeft : .leftToRight)
+            Group {
+                if showDiff {
+                    DiffText(original: model.sourceText, corrected: model.output)
+                } else {
+                    Text(verbatim: model.output.isEmpty ? "…" : model.output)
+                        .foregroundStyle(.primary)
+                }
+            }
+            .font(.system(size: 13))
+            .lineSpacing(3)
+            .textSelection(.enabled)
+            .frame(maxWidth: .infinity, alignment: hebrew ? .trailing : .leading)
+            .environment(\.layoutDirection, hebrew ? .rightToLeft : .leftToRight)
         }
         .overlay(alignment: .bottomTrailing) {
             if model.phase == .running {

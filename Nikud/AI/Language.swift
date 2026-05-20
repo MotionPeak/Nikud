@@ -55,11 +55,13 @@ enum LanguageDetector {
                 latin += 1
             }
         }
-        let total = hebrew + latin
-        guard total > 0 else { return .english }
-        let hebrewShare = Double(hebrew) / Double(total)
-        if hebrewShare > 0.65 { return .hebrew }
-        if hebrewShare < 0.20 { return .english }
+        // Hebrew-first: any meaningful amount of Hebrew counts as Hebrew,
+        // so bilingual text is still treated as Hebrew rather than mixed.
+        if hebrew == 0 { return .english }
+        if latin == 0 { return .hebrew }
+        let hebrewShare = Double(hebrew) / Double(hebrew + latin)
+        if hebrewShare >= 0.30 { return .hebrew }
+        if hebrewShare <= 0.08 { return .english }
         return .mixed
     }
 

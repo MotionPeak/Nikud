@@ -108,7 +108,7 @@ enum ModelCatalog {
             minRAMGB: 16,
             fileName: "DictaLM-3.0-Nemotron-12B-Instruct.Q4_K_M.gguf",
             downloadURL: URL(string: "https://huggingface.co/dicta-il/DictaLM-3.0-Nemotron-12B-Instruct-GGUF/resolve/main/DictaLM-3.0-Nemotron-12B-Instruct-Q4_K_M.gguf")!,
-            chatFormat: .mistral,
+            chatFormat: .chatml,
             hebrewTier: .excellent,
             speedTier: .heavy,
             isRecommended: false,

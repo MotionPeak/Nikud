@@ -45,6 +45,14 @@ enum TextTask: String, CaseIterable, Identifiable, Hashable {
         case .punctuate: return "Fix"
         }
     }
+
+    /// Whether the result is best shown as a diff highlighting what changed.
+    var showsDiff: Bool {
+        switch self {
+        case .proofread, .punctuate: return true
+        case .polish, .complete:     return false
+        }
+    }
 }
 
 /// Tone applied when polishing text.
