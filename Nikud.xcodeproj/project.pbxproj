@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09EAAB74F1E17782D5137281 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFF9251D31C295598B2C8595 /* Assets.xcassets */; };
+		17C484B461790C574ED47DA8 /* HeuristicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433361143862D3D679976DE4 /* HeuristicEngine.swift */; };
+		188DD5A0F44B47CC60E54142 /* ModelsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC98019F37B655FC7FEE16B /* ModelsTab.swift */; };
+		18E43B6015B54B93106E7CE2 /* KeyCombo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4083EA18008AB539D8F12BCE /* KeyCombo.swift */; };
+		22233041A64A3F9CC0DABE51 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64813A127D8AB6CDEA3B065 /* Language.swift */; };
+		2282F813A190D874018D3DBF /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B88C331471CE36B9B05FE3 /* UIComponents.swift */; };
+		22D75A9550E858F5D9964402 /* AboutTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E7AE6105F491AC71937795 /* AboutTab.swift */; };
+		2D528116E8ED15AA14C64E32 /* TextGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE23F1EF3035AA4EBBBB9BA /* TextGrabber.swift */; };
+		2DB6E21206C7D66F64E7BA53 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A2F8BC38BC449F1B76123F /* AppEnvironment.swift */; };
+		312283582F00F12601518126 /* ComposerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DC47837CDE15DB49FBD629 /* ComposerView.swift */; };
+		387FA53E83430B218F8121DB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EDBF6C79F0A2E665C6238 /* Theme.swift */; };
+		3C627324A6A2D9FC79DD7D9C /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B088A67DB019B90B72925C2 /* ModelManager.swift */; };
+		45C89D7E23D9F0A02E04490F /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8958599A6061C1D99826235 /* Preferences.swift */; };
+		469C72729F76ECCD1917482A /* SuggestionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474338B1937A147BA550FA8F /* SuggestionPanel.swift */; };
+		48D6460625DC2A3A1F297566 /* GeneralTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018E88FD619B876D6BD7CDB /* GeneralTab.swift */; };
+		4AC4E2CA9F3AD72E2AB4F716 /* llama.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1CEE7E1641DB65BC01F162 /* llama.xcframework */; };
+		622056F8A7FEFB0B5E44AA13 /* HotkeyCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AF1D6F256C7B89BAB1F78 /* HotkeyCenter.swift */; };
+		6B4846AC996D9E162D18A0C6 /* NikudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5C9F0A8DF5DFE0783606C /* NikudApp.swift */; };
+		731E2247451E9A62A1D34194 /* TextEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D746C264D7361FDE40D6742 /* TextEngine.swift */; };
+		7CD89F8AD1FB0033EC03507D /* llama.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1CEE7E1641DB65BC01F162 /* llama.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7ED36A7511C611189D2944B7 /* ComposerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD77F75AE0CB9F36E219 /* ComposerModel.swift */; };
+		8B171C3D6B4B687DD0943384 /* ModelCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0CF901D0F42FBE19200DBA /* ModelCatalog.swift */; };
+		91AEAAF40A42E4160CE49B17 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD349DE3F5B7E3FE9DDBDF7 /* SettingsWindow.swift */; };
+		98D4881F02A87C582F746C23 /* LlamaEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A9051D73767C2548AB0528 /* LlamaEngine.swift */; };
+		A6E12AAFBC2D37D0618FAA81 /* QuickAssist.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5DFBE09EBEB49B9AF2F770 /* QuickAssist.swift */; };
+		E4B7182B92A06FF69323E46C /* ShortcutsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C64A6DA1D9B11EC994F40 /* ShortcutsTab.swift */; };
+		F484CCBC82A36A47CF60DC0E /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C687586034270453C994D9B /* MenuBarView.swift */; };
+		FC482B1D7D7DF52DE309F614 /* TextTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927733466D42D720D6C71F6A /* TextTask.swift */; };
+		FDD1A77E9EE37EE865D45AFE /* PromptBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F86102196EEB41F3C10375D /* PromptBuilder.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2B2732005C958E12783F0C05 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7CD89F8AD1FB0033EC03507D /* llama.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		05A2F8BC38BC449F1B76123F /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		0B3EDBF6C79F0A2E665C6238 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		1A2C64A6DA1D9B11EC994F40 /* ShortcutsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsTab.swift; sourceTree = "<group>"; };
+		1C687586034270453C994D9B /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		38A9051D73767C2548AB0528 /* LlamaEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaEngine.swift; sourceTree = "<group>"; };
+		3DD349DE3F5B7E3FE9DDBDF7 /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
+		4083EA18008AB539D8F12BCE /* KeyCombo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombo.swift; sourceTree = "<group>"; };
+		433361143862D3D679976DE4 /* HeuristicEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeuristicEngine.swift; sourceTree = "<group>"; };
+		474338B1937A147BA550FA8F /* SuggestionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionPanel.swift; sourceTree = "<group>"; };
+		4A1CEE7E1641DB65BC01F162 /* llama.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = llama.xcframework; path = Frameworks/llama.xcframework; sourceTree = "<group>"; };
+		5D746C264D7361FDE40D6742 /* TextEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEngine.swift; sourceTree = "<group>"; };
+		6F0CF901D0F42FBE19200DBA /* ModelCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCatalog.swift; sourceTree = "<group>"; };
+		83E7AE6105F491AC71937795 /* AboutTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTab.swift; sourceTree = "<group>"; };
+		88B88C331471CE36B9B05FE3 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
+		8B088A67DB019B90B72925C2 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+		8F86102196EEB41F3C10375D /* PromptBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptBuilder.swift; sourceTree = "<group>"; };
+		9018E88FD619B876D6BD7CDB /* GeneralTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTab.swift; sourceTree = "<group>"; };
+		927733466D42D720D6C71F6A /* TextTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTask.swift; sourceTree = "<group>"; };
+		950DBD77F75AE0CB9F36E219 /* ComposerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposerModel.swift; sourceTree = "<group>"; };
+		95DC47837CDE15DB49FBD629 /* ComposerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposerView.swift; sourceTree = "<group>"; };
+		A57AF1D6F256C7B89BAB1F78 /* HotkeyCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyCenter.swift; sourceTree = "<group>"; };
+		BAC98019F37B655FC7FEE16B /* ModelsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsTab.swift; sourceTree = "<group>"; };
+		C9E5C9F0A8DF5DFE0783606C /* NikudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NikudApp.swift; sourceTree = "<group>"; };
+		CFF9251D31C295598B2C8595 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D8958599A6061C1D99826235 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		DE5DFBE09EBEB49B9AF2F770 /* QuickAssist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAssist.swift; sourceTree = "<group>"; };
+		E54FF4BF50930D359CCD5543 /* Nikud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nikud.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E64813A127D8AB6CDEA3B065 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		ECE23F1EF3035AA4EBBBB9BA /* TextGrabber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextGrabber.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC8728F1FF7052C7963838DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4AC4E2CA9F3AD72E2AB4F716 /* llama.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D61E404F830004BED7AD8ED /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				A57AF1D6F256C7B89BAB1F78 /* HotkeyCenter.swift */,
+				4083EA18008AB539D8F12BCE /* KeyCombo.swift */,
+				ECE23F1EF3035AA4EBBBB9BA /* TextGrabber.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		1433D2D081DBE3A1CC0232F0 /* Composer */ = {
+			isa = PBXGroup;
+			children = (
+				950DBD77F75AE0CB9F36E219 /* ComposerModel.swift */,
+				95DC47837CDE15DB49FBD629 /* ComposerView.swift */,
+			);
+			path = Composer;
+			sourceTree = "<group>";
+		};
+		28733911BB06876FB9F90156 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				D8958599A6061C1D99826235 /* Preferences.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		28E4F6970E3EAF4BB5926D4D /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				1C687586034270453C994D9B /* MenuBarView.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		2F1DB035C7C7F96EC0E9C0DA /* Nikud */ = {
+			isa = PBXGroup;
+			children = (
+				DC40642228A5695F94D67EF8 /* AI */,
+				B5C660CAB97490FAEBBFDBFE /* App */,
+				1433D2D081DBE3A1CC0232F0 /* Composer */,
+				AC553AB7881BE6230467F0C7 /* Design */,
+				0D61E404F830004BED7AD8ED /* Input */,
+				28E4F6970E3EAF4BB5926D4D /* MenuBar */,
+				322D995AFEB9D774B3AA7C09 /* Panel */,
+				B98411A5BA0D2A341AAD2BF3 /* Settings */,
+				28733911BB06876FB9F90156 /* Support */,
+				CFF9251D31C295598B2C8595 /* Assets.xcassets */,
+			);
+			path = Nikud;
+			sourceTree = "<group>";
+		};
+		322D995AFEB9D774B3AA7C09 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				DE5DFBE09EBEB49B9AF2F770 /* QuickAssist.swift */,
+				474338B1937A147BA550FA8F /* SuggestionPanel.swift */,
+			);
+			path = Panel;
+			sourceTree = "<group>";
+		};
+		4D0BE571A73E65DBBE465DD0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E54FF4BF50930D359CCD5543 /* Nikud.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		85958CAE04F08060D81958F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A1CEE7E1641DB65BC01F162 /* llama.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC553AB7881BE6230467F0C7 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				0B3EDBF6C79F0A2E665C6238 /* Theme.swift */,
+				88B88C331471CE36B9B05FE3 /* UIComponents.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		B5C660CAB97490FAEBBFDBFE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				05A2F8BC38BC449F1B76123F /* AppEnvironment.swift */,
+				C9E5C9F0A8DF5DFE0783606C /* NikudApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B98411A5BA0D2A341AAD2BF3 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				83E7AE6105F491AC71937795 /* AboutTab.swift */,
+				9018E88FD619B876D6BD7CDB /* GeneralTab.swift */,
+				BAC98019F37B655FC7FEE16B /* ModelsTab.swift */,
+				3DD349DE3F5B7E3FE9DDBDF7 /* SettingsWindow.swift */,
+				1A2C64A6DA1D9B11EC994F40 /* ShortcutsTab.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		C7FF88D5015AB7AEC12FE9A9 = {
+			isa = PBXGroup;
+			children = (
+				2F1DB035C7C7F96EC0E9C0DA /* Nikud */,
+				85958CAE04F08060D81958F9 /* Frameworks */,
+				4D0BE571A73E65DBBE465DD0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DC40642228A5695F94D67EF8 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				433361143862D3D679976DE4 /* HeuristicEngine.swift */,
+				E64813A127D8AB6CDEA3B065 /* Language.swift */,
+				38A9051D73767C2548AB0528 /* LlamaEngine.swift */,
+				6F0CF901D0F42FBE19200DBA /* ModelCatalog.swift */,
+				8B088A67DB019B90B72925C2 /* ModelManager.swift */,
+				8F86102196EEB41F3C10375D /* PromptBuilder.swift */,
+				5D746C264D7361FDE40D6742 /* TextEngine.swift */,
+				927733466D42D720D6C71F6A /* TextTask.swift */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3AD3CD75C9D6B299A4DF5E33 /* Nikud */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A26E0955F69687DD781E30D /* Build configuration list for PBXNativeTarget "Nikud" */;
+			buildPhases = (
+				939C6EFFE73245867C748B0A /* Sources */,
+				B49B4B5DE29C70AF4E0EE229 /* Resources */,
+				AC8728F1FF7052C7963838DC /* Frameworks */,
+				2B2732005C958E12783F0C05 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nikud;
+			packageProductDependencies = (
+			);
+			productName = Nikud;
+			productReference = E54FF4BF50930D359CCD5543 /* Nikud.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BB5893AB25EDD93C74082287 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					3AD3CD75C9D6B299A4DF5E33 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C09826ABE52A3097D3EB2BC7 /* Build configuration list for PBXProject "Nikud" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C7FF88D5015AB7AEC12FE9A9;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 4D0BE571A73E65DBBE465DD0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3AD3CD75C9D6B299A4DF5E33 /* Nikud */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B49B4B5DE29C70AF4E0EE229 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09EAAB74F1E17782D5137281 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		939C6EFFE73245867C748B0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22D75A9550E858F5D9964402 /* AboutTab.swift in Sources */,
+				2DB6E21206C7D66F64E7BA53 /* AppEnvironment.swift in Sources */,
+				7ED36A7511C611189D2944B7 /* ComposerModel.swift in Sources */,
+				312283582F00F12601518126 /* ComposerView.swift in Sources */,
+				48D6460625DC2A3A1F297566 /* GeneralTab.swift in Sources */,
+				17C484B461790C574ED47DA8 /* HeuristicEngine.swift in Sources */,
+				622056F8A7FEFB0B5E44AA13 /* HotkeyCenter.swift in Sources */,
+				18E43B6015B54B93106E7CE2 /* KeyCombo.swift in Sources */,
+				22233041A64A3F9CC0DABE51 /* Language.swift in Sources */,
+				98D4881F02A87C582F746C23 /* LlamaEngine.swift in Sources */,
+				F484CCBC82A36A47CF60DC0E /* MenuBarView.swift in Sources */,
+				8B171C3D6B4B687DD0943384 /* ModelCatalog.swift in Sources */,
+				3C627324A6A2D9FC79DD7D9C /* ModelManager.swift in Sources */,
+				188DD5A0F44B47CC60E54142 /* ModelsTab.swift in Sources */,
+				6B4846AC996D9E162D18A0C6 /* NikudApp.swift in Sources */,
+				45C89D7E23D9F0A02E04490F /* Preferences.swift in Sources */,
+				FDD1A77E9EE37EE865D45AFE /* PromptBuilder.swift in Sources */,
+				A6E12AAFBC2D37D0618FAA81 /* QuickAssist.swift in Sources */,
+				91AEAAF40A42E4160CE49B17 /* SettingsWindow.swift in Sources */,
+				E4B7182B92A06FF69323E46C /* ShortcutsTab.swift in Sources */,
+				469C72729F76ECCD1917482A /* SuggestionPanel.swift in Sources */,
+				731E2247451E9A62A1D34194 /* TextEngine.swift in Sources */,
+				2D528116E8ED15AA14C64E32 /* TextGrabber.swift in Sources */,
+				FC482B1D7D7DF52DE309F614 /* TextTask.swift in Sources */,
+				387FA53E83430B218F8121DB /* Theme.swift in Sources */,
+				2282F813A190D874018D3DBF /* UIComponents.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5519665C57B722B8A59B0D7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6D150A0FB672A9B42CEF4EF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Nikud/Nikud.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Nikud/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shaharsolomons.Nikud;
+				PRODUCT_NAME = Nikud;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7C91BBEC50D9AC249AEC5D3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AE87C4BC401A0893C706FF4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Nikud/Nikud.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Nikud/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shaharsolomons.Nikud;
+				PRODUCT_NAME = Nikud;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8A26E0955F69687DD781E30D /* Build configuration list for PBXNativeTarget "Nikud" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D150A0FB672A9B42CEF4EF1 /* Debug */,
+				AE87C4BC401A0893C706FF4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C09826ABE52A3097D3EB2BC7 /* Build configuration list for PBXProject "Nikud" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5519665C57B722B8A59B0D7C /* Debug */,
+				7C91BBEC50D9AC249AEC5D3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BB5893AB25EDD93C74082287 /* Project object */;
+}

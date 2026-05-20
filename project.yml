@@ -1,0 +1,48 @@
+name: Nikud
+options:
+  bundleIdPrefix: com.shaharsolomons
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: false
+  groupSortPosition: top
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_STRICT_CONCURRENCY: minimal
+    ALWAYS_SEARCH_USER_PATHS: NO
+    CLANG_ENABLE_OBJC_ARC: YES
+targets:
+  Nikud:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: Nikud
+        excludes:
+          - "Info.plist"
+          - "Nikud.entitlements"
+    settings:
+      base:
+        PRODUCT_NAME: Nikud
+        PRODUCT_BUNDLE_IDENTIFIER: com.shaharsolomons.Nikud
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Nikud/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Nikud/Nikud.entitlements
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_HARDENED_RUNTIME: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        COMBINE_HIDPI_IMAGES: YES
+        ENABLE_PREVIEWS: YES
+        LD_RUNPATH_SEARCH_PATHS:
+          - "$(inherited)"
+          - "@executable_path/../Frameworks"
+    dependencies:
+      - framework: Frameworks/llama.xcframework
+        embed: true
+        codeSign: true
+    scheme:
+      testTargets: []
