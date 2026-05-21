@@ -14,6 +14,9 @@ enum PromptBuilder {
             language: request.language
         )
         let content = request.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        if request.task == .complete {
+            return wrapCompletion(instruction: system, content: content, format: format)
+        }
         return wrap(system: system, content: content, format: format)
     }
 
@@ -49,7 +52,8 @@ enum PromptBuilder {
         case .complete:
             return "השלם את הטקסט באופן טבעי. כתוב אך ורק את ההמשך בעברית — "
                 + "אל תחזור על מה שכבר נכתב. שמור על אותה נימה וסגנון, "
-                + "והוסף משפט אחד או שניים לכל היותר."
+                + "והוסף משפט אחד או שניים לכל היותר. "
+                + "כתוב טקסט רגיל בלבד, ללא Markdown או סימוני עיצוב."
         }
     }
 
@@ -72,6 +76,7 @@ enum PromptBuilder {
             return "You continue the user's text naturally. Write only the text that"
                 + " should come next — do not repeat what the user already wrote. Keep"
                 + " the same tone and style, and add at most one or two sentences."
+                + " Write plain text only, with no markdown or formatting symbols."
         }
     }
 
@@ -91,6 +96,24 @@ enum PromptBuilder {
             return "<|start_header_id|>system<|end_header_id|>\n\n\(system)<|eot_id|>"
                 + "<|start_header_id|>user<|end_header_id|>\n\n\(content)<|eot_id|>"
                 + "<|start_header_id|>assistant<|end_header_id|>\n\n"
+        }
+    }
+
+    /// Builds a completion prompt: the instruction once, then the assistant turn
+    /// prefilled with the user's text so the model simply extends it. The text
+    /// is not echoed in a user turn, which keeps the prompt short and fast.
+    private static func wrapCompletion(instruction: String, content: String, format: ChatFormat) -> String {
+        switch format {
+        case .mistral:
+            return "[INST] \(instruction) [/INST] \(content)"
+        case .gemma:
+            return "<start_of_turn>user\n\(instruction)<end_of_turn>\n<start_of_turn>model\n\(content)"
+        case .chatml:
+            return "<|im_start|>user\n\(instruction)<|im_end|>\n"
+                + "<|im_start|>assistant\n\(content)"
+        case .llama3:
+            return "<|start_header_id|>user<|end_header_id|>\n\n\(instruction)<|eot_id|>"
+                + "<|start_header_id|>assistant<|end_header_id|>\n\n\(content)"
         }
     }
 }

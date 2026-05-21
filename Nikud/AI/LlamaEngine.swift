@@ -141,7 +141,9 @@ final class LlamaEngine: TextEngine {
             emittedCharacters += tail.count
         }
 
-        if emittedCharacters == 0 {
+        // An empty completion just means there is nothing more to suggest; only
+        // the instruction tasks treat an empty response as a real failure.
+        if emittedCharacters == 0 && request.task != .complete {
             throw EngineError.generationFailed(
                 "the model returned an empty response. Try DictaLM 2.0 in Settings → Models — it is known to work well."
             )
@@ -227,7 +229,7 @@ final class LlamaEngine: TextEngine {
 
     private func maxNewTokens(for task: TextTask) -> Int {
         switch task {
-        case .complete:  return 110
+        case .complete:  return 14
         case .punctuate: return 700
         case .proofread: return 700
         case .polish:    return 800

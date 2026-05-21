@@ -14,6 +14,8 @@ final class Preferences: ObservableObject {
         static let creativity = "creativity"
         static let proofreadTone = "proofreadTone"
         static let replaceSelectionDirectly = "replaceSelectionDirectly"
+        static let autocompleteEnabled = "autocompleteEnabled"
+        static let systemAutocompleteEnabled = "systemAutocompleteEnabled"
     }
 
     /// Default hotkey is Option-Command-P. Carbon virtual key 35 is the "P" key.
@@ -53,6 +55,12 @@ final class Preferences: ObservableObject {
     @Published var replaceSelectionDirectly: Bool {
         didSet { store.set(replaceSelectionDirectly, forKey: Keys.replaceSelectionDirectly) }
     }
+    @Published var autocompleteEnabled: Bool {
+        didSet { store.set(autocompleteEnabled, forKey: Keys.autocompleteEnabled) }
+    }
+    @Published var systemAutocompleteEnabled: Bool {
+        didSet { store.set(systemAutocompleteEnabled, forKey: Keys.systemAutocompleteEnabled) }
+    }
 
     init() {
         let d = UserDefaults.standard
@@ -66,5 +74,7 @@ final class Preferences: ObservableObject {
         creativity = (d.object(forKey: Keys.creativity) as? Double) ?? 0.35
         proofreadTone = Tone(rawValue: d.string(forKey: Keys.proofreadTone) ?? "") ?? .professional
         replaceSelectionDirectly = (d.object(forKey: Keys.replaceSelectionDirectly) as? Bool) ?? false
+        autocompleteEnabled = (d.object(forKey: Keys.autocompleteEnabled) as? Bool) ?? true
+        systemAutocompleteEnabled = (d.object(forKey: Keys.systemAutocompleteEnabled) as? Bool) ?? false
     }
 }

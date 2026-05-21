@@ -16,6 +16,7 @@ final class AppEnvironment: ObservableObject {
     let models: ModelManager
     let catalog = ModelCatalog.all
     private(set) lazy var quickAssist = QuickAssist(environment: self)
+    private(set) lazy var systemAutocomplete = SystemAutocomplete(environment: self)
 
     /// The engine currently used for all requests.
     @Published private(set) var engine: any TextEngine
@@ -31,6 +32,7 @@ final class AppEnvironment: ObservableObject {
         models = ModelManager()
         engine = HeuristicEngine()
         quickAssist.start()
+        systemAutocomplete.sync()
 
         // Bubble nested changes up so views observing AppEnvironment refresh.
         preferences.objectWillChange
@@ -80,6 +82,11 @@ final class AppEnvironment: ObservableObject {
     /// Re-applies the global hotkey after shortcut settings change.
     func applyHotkeySettings() {
         quickAssist.applyHotkeyPreference()
+    }
+
+    /// Starts or stops system-wide autocomplete after the setting changes.
+    func syncSystemAutocomplete() {
+        systemAutocomplete.sync()
     }
 
     /// Selects a model and loads it into a llama.cpp engine.

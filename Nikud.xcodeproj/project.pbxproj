@@ -15,8 +15,10 @@
 		22233041A64A3F9CC0DABE51 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64813A127D8AB6CDEA3B065 /* Language.swift */; };
 		2282F813A190D874018D3DBF /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B88C331471CE36B9B05FE3 /* UIComponents.swift */; };
 		22D75A9550E858F5D9964402 /* AboutTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E7AE6105F491AC71937795 /* AboutTab.swift */; };
+		27380602AEFF6EDB54A65007 /* SystemAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D14B3D753171BEDDD88132F /* SystemAutocomplete.swift */; };
 		2D528116E8ED15AA14C64E32 /* TextGrabber.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE23F1EF3035AA4EBBBB9BA /* TextGrabber.swift */; };
 		2DB6E21206C7D66F64E7BA53 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A2F8BC38BC449F1B76123F /* AppEnvironment.swift */; };
+		2F2D6B1D96DAE6F326988693 /* TextInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817F230100A5DB6F9FD47C32 /* TextInjector.swift */; };
 		312283582F00F12601518126 /* ComposerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DC47837CDE15DB49FBD629 /* ComposerView.swift */; };
 		387FA53E83430B218F8121DB /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3EDBF6C79F0A2E665C6238 /* Theme.swift */; };
 		3C627324A6A2D9FC79DD7D9C /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B088A67DB019B90B72925C2 /* ModelManager.swift */; };
@@ -25,14 +27,17 @@
 		48D6460625DC2A3A1F297566 /* GeneralTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9018E88FD619B876D6BD7CDB /* GeneralTab.swift */; };
 		4AC4E2CA9F3AD72E2AB4F716 /* llama.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1CEE7E1641DB65BC01F162 /* llama.xcframework */; };
 		622056F8A7FEFB0B5E44AA13 /* HotkeyCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57AF1D6F256C7B89BAB1F78 /* HotkeyCenter.swift */; };
+		65D5EB29BB8F5A3C5191918E /* KeyTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5B5655B3BEFA0AC8E246AE /* KeyTap.swift */; };
 		6B4846AC996D9E162D18A0C6 /* NikudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5C9F0A8DF5DFE0783606C /* NikudApp.swift */; };
 		731E2247451E9A62A1D34194 /* TextEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D746C264D7361FDE40D6742 /* TextEngine.swift */; };
+		7BD6D3C1FCB352F657F12F8A /* SystemTextMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5053DA92AFD0DB75D6B3F8 /* SystemTextMonitor.swift */; };
 		7CD89F8AD1FB0033EC03507D /* llama.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1CEE7E1641DB65BC01F162 /* llama.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7ED36A7511C611189D2944B7 /* ComposerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD77F75AE0CB9F36E219 /* ComposerModel.swift */; };
 		8B171C3D6B4B687DD0943384 /* ModelCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0CF901D0F42FBE19200DBA /* ModelCatalog.swift */; };
 		91AEAAF40A42E4160CE49B17 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD349DE3F5B7E3FE9DDBDF7 /* SettingsWindow.swift */; };
 		98D4881F02A87C582F746C23 /* LlamaEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A9051D73767C2548AB0528 /* LlamaEngine.swift */; };
 		A6E12AAFBC2D37D0618FAA81 /* QuickAssist.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5DFBE09EBEB49B9AF2F770 /* QuickAssist.swift */; };
+		D4494A66308F789922F3C953 /* GhostOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCF72CDBDA08852F1CE2819 /* GhostOverlay.swift */; };
 		E4B7182B92A06FF69323E46C /* ShortcutsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C64A6DA1D9B11EC994F40 /* ShortcutsTab.swift */; };
 		F484CCBC82A36A47CF60DC0E /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C687586034270453C994D9B /* MenuBarView.swift */; };
 		FC482B1D7D7DF52DE309F614 /* TextTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927733466D42D720D6C71F6A /* TextTask.swift */; };
@@ -59,14 +64,17 @@
 		1A2C64A6DA1D9B11EC994F40 /* ShortcutsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsTab.swift; sourceTree = "<group>"; };
 		1C687586034270453C994D9B /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		38A9051D73767C2548AB0528 /* LlamaEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaEngine.swift; sourceTree = "<group>"; };
+		3C5B5655B3BEFA0AC8E246AE /* KeyTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyTap.swift; sourceTree = "<group>"; };
 		3DD349DE3F5B7E3FE9DDBDF7 /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
 		4083EA18008AB539D8F12BCE /* KeyCombo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCombo.swift; sourceTree = "<group>"; };
 		433361143862D3D679976DE4 /* HeuristicEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeuristicEngine.swift; sourceTree = "<group>"; };
 		474338B1937A147BA550FA8F /* SuggestionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionPanel.swift; sourceTree = "<group>"; };
 		4A1CEE7E1641DB65BC01F162 /* llama.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = llama.xcframework; path = Frameworks/llama.xcframework; sourceTree = "<group>"; };
+		4D5053DA92AFD0DB75D6B3F8 /* SystemTextMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemTextMonitor.swift; sourceTree = "<group>"; };
 		5D746C264D7361FDE40D6742 /* TextEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEngine.swift; sourceTree = "<group>"; };
 		6F0CF901D0F42FBE19200DBA /* ModelCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCatalog.swift; sourceTree = "<group>"; };
 		7D8FF6C3AB6544364884C263 /* TextDiff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDiff.swift; sourceTree = "<group>"; };
+		817F230100A5DB6F9FD47C32 /* TextInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInjector.swift; sourceTree = "<group>"; };
 		83E7AE6105F491AC71937795 /* AboutTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTab.swift; sourceTree = "<group>"; };
 		88B88C331471CE36B9B05FE3 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 		8B088A67DB019B90B72925C2 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
@@ -75,11 +83,13 @@
 		927733466D42D720D6C71F6A /* TextTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTask.swift; sourceTree = "<group>"; };
 		950DBD77F75AE0CB9F36E219 /* ComposerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposerModel.swift; sourceTree = "<group>"; };
 		95DC47837CDE15DB49FBD629 /* ComposerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposerView.swift; sourceTree = "<group>"; };
+		9D14B3D753171BEDDD88132F /* SystemAutocomplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemAutocomplete.swift; sourceTree = "<group>"; };
 		A57AF1D6F256C7B89BAB1F78 /* HotkeyCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyCenter.swift; sourceTree = "<group>"; };
 		BAC98019F37B655FC7FEE16B /* ModelsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsTab.swift; sourceTree = "<group>"; };
 		C9E5C9F0A8DF5DFE0783606C /* NikudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NikudApp.swift; sourceTree = "<group>"; };
 		CFF9251D31C295598B2C8595 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8958599A6061C1D99826235 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		DBCF72CDBDA08852F1CE2819 /* GhostOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostOverlay.swift; sourceTree = "<group>"; };
 		DE5DFBE09EBEB49B9AF2F770 /* QuickAssist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAssist.swift; sourceTree = "<group>"; };
 		E54FF4BF50930D359CCD5543 /* Nikud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nikud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64813A127D8AB6CDEA3B065 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -103,7 +113,10 @@
 			children = (
 				A57AF1D6F256C7B89BAB1F78 /* HotkeyCenter.swift */,
 				4083EA18008AB539D8F12BCE /* KeyCombo.swift */,
+				3C5B5655B3BEFA0AC8E246AE /* KeyTap.swift */,
+				4D5053DA92AFD0DB75D6B3F8 /* SystemTextMonitor.swift */,
 				ECE23F1EF3035AA4EBBBB9BA /* TextGrabber.swift */,
+				817F230100A5DB6F9FD47C32 /* TextInjector.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -153,8 +166,10 @@
 		322D995AFEB9D774B3AA7C09 /* Panel */ = {
 			isa = PBXGroup;
 			children = (
+				DBCF72CDBDA08852F1CE2819 /* GhostOverlay.swift */,
 				DE5DFBE09EBEB49B9AF2F770 /* QuickAssist.swift */,
 				474338B1937A147BA550FA8F /* SuggestionPanel.swift */,
+				9D14B3D753171BEDDD88132F /* SystemAutocomplete.swift */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -308,9 +323,11 @@
 				7ED36A7511C611189D2944B7 /* ComposerModel.swift in Sources */,
 				312283582F00F12601518126 /* ComposerView.swift in Sources */,
 				48D6460625DC2A3A1F297566 /* GeneralTab.swift in Sources */,
+				D4494A66308F789922F3C953 /* GhostOverlay.swift in Sources */,
 				17C484B461790C574ED47DA8 /* HeuristicEngine.swift in Sources */,
 				622056F8A7FEFB0B5E44AA13 /* HotkeyCenter.swift in Sources */,
 				18E43B6015B54B93106E7CE2 /* KeyCombo.swift in Sources */,
+				65D5EB29BB8F5A3C5191918E /* KeyTap.swift in Sources */,
 				22233041A64A3F9CC0DABE51 /* Language.swift in Sources */,
 				98D4881F02A87C582F746C23 /* LlamaEngine.swift in Sources */,
 				F484CCBC82A36A47CF60DC0E /* MenuBarView.swift in Sources */,
@@ -324,9 +341,12 @@
 				91AEAAF40A42E4160CE49B17 /* SettingsWindow.swift in Sources */,
 				E4B7182B92A06FF69323E46C /* ShortcutsTab.swift in Sources */,
 				469C72729F76ECCD1917482A /* SuggestionPanel.swift in Sources */,
+				27380602AEFF6EDB54A65007 /* SystemAutocomplete.swift in Sources */,
+				7BD6D3C1FCB352F657F12F8A /* SystemTextMonitor.swift in Sources */,
 				0701B2BF084BA7B705C25AAB /* TextDiff.swift in Sources */,
 				731E2247451E9A62A1D34194 /* TextEngine.swift in Sources */,
 				2D528116E8ED15AA14C64E32 /* TextGrabber.swift in Sources */,
+				2F2D6B1D96DAE6F326988693 /* TextInjector.swift in Sources */,
 				FC482B1D7D7DF52DE309F614 /* TextTask.swift in Sources */,
 				387FA53E83430B218F8121DB /* Theme.swift in Sources */,
 				2282F813A190D874018D3DBF /* UIComponents.swift in Sources */,

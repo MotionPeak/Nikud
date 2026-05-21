@@ -8,6 +8,7 @@ struct ComposerView: View {
     @Environment(\.openWindow) private var openWindow
     @StateObject private var model = ComposerModel()
     @State private var didApplyDefaults = false
+    @State private var tabMonitor: Any?
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.md) {
@@ -19,12 +20,19 @@ struct ComposerView: View {
         }
         .padding(Theme.Spacing.md)
         .onAppear {
-            guard !didApplyDefaults else { return }
-            didApplyDefaults = true
-            model.task = preferences.defaultTask
+            if !didApplyDefaults {
+                didApplyDefaults = true
+                model.task = preferences.defaultTask
+            }
+            installTabMonitor()
+        }
+        .onDisappear { removeTabMonitor() }
+        .onChange(of: model.input) { _, _ in
+            model.inputChanged(using: env)
         }
         .animation(Theme.Motion.spring, value: model.phase)
         .animation(Theme.Motion.spring, value: model.task)
+        .animation(Theme.Motion.snappy, value: model.suggestion)
     }
 
     // MARK: Task
@@ -45,6 +53,10 @@ struct ComposerView: View {
     private var inputSection: some View {
         let hebrew = LanguageDetector.detect(model.input) == .hebrew
         return ZStack(alignment: hebrew ? .topTrailing : .topLeading) {
+            if !model.suggestion.isEmpty {
+                ghostText(hebrew: hebrew)
+            }
+
             TextEditor(text: $model.input)
                 .font(.system(size: 13))
                 .scrollContentBackground(.hidden)
@@ -81,6 +93,14 @@ struct ComposerView: View {
                 Text("\(model.input.count)")
                     .font(.system(size: 10, weight: .medium))
                     .foregroundStyle(.tertiary)
+            }
+
+            if !model.suggestion.isEmpty {
+                HStack(spacing: 3) {
+                    Text(verbatim: "⇥").font(.system(size: 10, weight: .bold))
+                    Text("to accept").font(.system(size: 10, weight: .medium))
+                }
+                .foregroundStyle(Theme.accent)
             }
 
             Spacer()
@@ -173,6 +193,40 @@ struct ComposerView: View {
         env.settingsTab = .models
         NSApplication.shared.activate()
         openWindow(id: WindowID.settings)
+    }
+
+    // MARK: Autocomplete
+
+    /// The suggestion shown inline behind the editor, as muted ghost text.
+    private func ghostText(hebrew: Bool) -> some View {
+        (Text(verbatim: model.input).foregroundColor(.clear)
+            + Text(verbatim: model.suggestion).foregroundColor(Color(nsColor: .placeholderTextColor)))
+            .font(.system(size: 13))
+            .multilineTextAlignment(hebrew ? .trailing : .leading)
+            .environment(\.layoutDirection, hebrew ? .rightToLeft : .leftToRight)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: hebrew ? .topTrailing : .topLeading)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 15)
+            .allowsHitTesting(false)
+    }
+
+    private func installTabMonitor() {
+        guard tabMonitor == nil else { return }
+        let model = self.model
+        tabMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { event in
+            if event.keyCode == 48, !model.suggestion.isEmpty {
+                model.acceptSuggestion()
+                return nil
+            }
+            return event
+        }
+    }
+
+    private func removeTabMonitor() {
+        if let tabMonitor {
+            NSEvent.removeMonitor(tabMonitor)
+            self.tabMonitor = nil
+        }
     }
 }
 

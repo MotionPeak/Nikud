@@ -3,6 +3,7 @@ import ServiceManagement
 
 struct GeneralTab: View {
     @EnvironmentObject private var preferences: Preferences
+    @EnvironmentObject private var env: AppEnvironment
 
     var body: some View {
         ScrollView {
@@ -104,9 +105,36 @@ struct GeneralTab: View {
                     .tint(Theme.accent)
                     .labelsHidden()
             }
+
+            RowDivider()
+
+            SettingRow(
+                title: "Suggest completions",
+                subtitle: "While you type in Nikud, suggest how to finish the sentence — press Tab to accept. Needs a downloaded model."
+            ) {
+                Toggle("", isOn: $preferences.autocompleteEnabled)
+                    .toggleStyle(.switch)
+                    .tint(Theme.accent)
+                    .labelsHidden()
+            }
+
+            RowDivider()
+
+            SettingRow(
+                title: "Autocomplete in other apps",
+                subtitle: "Experimental. Suggest completions as you type in native Mac apps — press Tab to accept. Needs Accessibility access and a downloaded model."
+            ) {
+                Toggle("", isOn: $preferences.systemAutocompleteEnabled)
+                    .toggleStyle(.switch)
+                    .tint(Theme.accent)
+                    .labelsHidden()
+            }
         }
         .onChange(of: preferences.launchAtLogin) { _, enabled in
             updateLoginItem(enabled)
+        }
+        .onChange(of: preferences.systemAutocompleteEnabled) { _, _ in
+            env.syncSystemAutocomplete()
         }
     }
 

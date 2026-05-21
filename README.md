@@ -53,11 +53,27 @@ place. This needs Accessibility permission:
 **Settings → Shortcut** shows the permission status and lets you record a
 different shortcut.
 
+## Autocomplete
+
+As you type, Nikud can suggest the rest of the sentence as grey ghost text.
+Press **Tab** to accept one word at a time; the next words keep coming.
+
+- **In the composer** — on by default while you type in Nikud's own window.
+  Toggle it with **Settings → Suggest completions**.
+- **System-wide** — turn on **Settings → Autocomplete in other apps**. It shows
+  suggestions at the cursor in native Mac apps such as Notes, Mail, TextEdit,
+  and Pages, and needs the same Accessibility permission as the shortcut.
+
+Web-based apps (Claude, VS Code, Slack, browsers) don't report the cursor
+position to macOS, so system-wide autocomplete stays off in them rather than
+place a suggestion in the wrong spot. Both modes need a downloaded model.
+
 ## Tasks
 
 - **Complete** — finish the current sentence naturally
 - **Proofread** — fix grammar, spelling, and punctuation
-- **Polish** — rewrite more clearly (professional, friendly, or concise)
+- **Polish** — rewrite more clearly, in one of five tones (professional,
+  friendly, concise, old-world, or playful)
 - **Punctuation** — correct only punctuation and spacing
 
 ## Privacy
