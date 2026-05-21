@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+    <channel>
+        <title>Nikud</title>
+            <item>
+            <title>Version 1.0.0</title>
+            <description><![CDATA[
+                <ul>
+                    <li>שיפורי ביצועים ותיקוני באגים</li>
+                </ul>
+            ]]></description>
+            <pubDate>Thu, 21 May 2026 17:43:44 +0300</pubDate>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure
+                url="https://github.com/MotionPeak/Nikud/releases/download/v1.0.0/Nikud.1.0.0.dmg"
+                type="application/octet-stream"
+                sparkle:edSignature="aSOfbNMKcigMyB633MI7t4w+krbaQgXwXS7EyOf+6ZbsA1q3Bb5w7aDyI5fHA2ZU/SDdNsAbp/y3nLFTYHwvAg=="
+                length="6187671"
+            />
+        </item>
+</channel>
+</rss>
